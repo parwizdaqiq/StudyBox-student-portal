@@ -1,0 +1,426 @@
+/*
+ * StudyBox Admin — soft, light-gray "frosted" visual language:
+ * the whole app sits inside one large rounded frame, cards are a hair
+ * lighter than the frame with a soft drop + top-left highlight, accents
+ * are a deep electric blue, and the only loud colour is a lime trend pill.
+ */
+:root {
+  --primary: #1f2bd8;          /* deep electric blue (radar stroke, progress bars) */
+  --primary-dark: #1620a8;
+  --primary-bright: #2f7bff;   /* radar gradient core */
+
+  --page-bg: #e6e6e9;          /* behind the frame */
+  --bg: #efeff2;               /* the frame itself */
+  --surface: #f6f6f8;          /* cards */
+  --surface-sunken: #e4e4e8;   /* pills, buttons, empty tiles */
+  --ink: #111114;              /* active sidebar item, check tile */
+
+  --text-primary: #16161a;
+  --text-secondary: #5f5f67;
+  --text-muted: #9a9aa3;
+  --border: #e1e1e6;
+  --icon: #a6a6ae;
+
+  --lime: #d9f26e;
+  --success: #22a35f;
+  --warning: #d98a1c;
+  --danger: #e04848;
+  --info: #2f7bff;
+
+  --radius-xl: 24px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --shadow-card: 0 18px 40px -24px rgba(20, 20, 40, 0.18), 0 2px 6px rgba(20, 20, 40, 0.03),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.9);
+  --shadow-frame: 0 40px 80px -30px rgba(20, 20, 40, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.8);
+
+  /* Soft tints kept for secondary pages' highlight cards. */
+  --tint-1: #e9ebfb;
+  --tint-1-accent: #1f2bd8;
+  --tint-2: #f7e9f0;
+  --tint-2-accent: #b8497f;
+  --tint-3: #e5f3ea;
+  --tint-3-accent: #1f8a4f;
+  --tint-4: #f6eee2;
+  --tint-4-accent: #b86f12;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 9px 15px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-primary:hover {
+  background: #2a2a31;
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.btn-soft {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 11px;
+  padding: 9px 14px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.btn-soft:hover {
+  background: #dadadf;
+}
+
+.icon-btn-plain {
+  background: none;
+  border: none;
+  padding: 4px;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.icon-btn-plain:hover {
+  color: var(--text-primary);
+  background: var(--surface-sunken);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 11px 16px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.badge-success {
+  background: rgba(34, 163, 95, 0.12);
+  color: var(--success);
+}
+
+.badge-warning {
+  background: rgba(217, 138, 28, 0.13);
+  color: var(--warning);
+}
+
+.badge-danger {
+  background: rgba(224, 72, 72, 0.12);
+  color: var(--danger);
+}
+
+.badge-info {
+  background: rgba(47, 123, 255, 0.12);
+  color: var(--info);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* Shared page header used by every non-dashboard page. */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.page-header h1 {
+  font-size: 21px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+
+/* ------------------------------------------------------------------------
+ * Super Admin building blocks (shared by every /super-admin page)
+ * ---------------------------------------------------------------------- */
+.sa-card {
+  padding: 20px 22px;
+  margin-bottom: 16px;
+}
+
+.sa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sa-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.sa-grid.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sa-grid .span-all {
+  grid-column: 1 / -1;
+}
+
+.sa-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sa-field input,
+.sa-field select,
+.sa-field textarea,
+.sa-input {
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--surface-sunken);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  outline: none;
+  width: 100%;
+}
+
+.sa-field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.sa-field input:focus,
+.sa-field select:focus,
+.sa-field textarea:focus,
+.sa-input:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: -1px;
+}
+
+.sa-error {
+  background: rgba(224, 72, 72, 0.1);
+  color: var(--danger);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 12.5px;
+}
+
+.sa-ok {
+  background: rgba(34, 163, 95, 0.1);
+  color: var(--success);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 12.5px;
+}
+
+.sa-hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sa-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sa-row-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.sa-link-btn {
+  background: none;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.sa-link-btn:hover {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+}
+
+.sa-link-btn.danger {
+  color: var(--danger);
+}
+
+.sa-link-btn.danger:hover {
+  background: rgba(224, 72, 72, 0.1);
+}
+
+.sa-toolbar {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.sa-toolbar .sa-field {
+  min-width: 220px;
+}
+
+.sa-table-wrap {
+  overflow-x: auto;
+}
+
+.sa-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin: 1px 4px 1px 0;
+  background: var(--surface-sunken);
+  color: var(--text-secondary);
+}
+
+.sa-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.sa-empty {
+  padding: 18px 4px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.sa-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sa-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  background: var(--surface-sunken);
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .sa-grid,
+  .sa-grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
